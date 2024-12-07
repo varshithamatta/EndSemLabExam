@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.klef.jfsd.exam.Vehicle" table="vehicle">
+        <id name="id" column="id" type="int">
+            <generator class="increment" />
+        </id>
+        <property name="name" column="name" type="string" />
+        <property name="type" column="type" type="string" />
+        <property name="maxSpeed" column="max_speed" type="int" />
+        <property name="color" column="color" type="string" />
+
+        <union-subclass name="com.klef.jfsd.exam.Car" table="car">
+            <property name="numberOfDoors" column="number_of_doors" type="int" />
+        </union-subclass>
+
+        <union-subclass name="com.klef.jfsd.exam.Truck" table="truck">
+            <property name="loadCapacity" column="load_capacity" type="int" />
+        </union-subclass>
+    </class>
+</hibernate-mapping>
